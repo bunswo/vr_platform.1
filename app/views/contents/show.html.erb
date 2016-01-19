@@ -1,44 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Content -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Content %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @content.title %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @content.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @content.description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:filename) %></dt>
+      <dd><pre class="prettyprint"><%= @content.filename %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:sort_order) %></dt>
+      <dd><pre class="prettyprint"><%= @content.sort_order %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:thumbnail) %></dt>
+      <dd><pre class="prettyprint"><%= @content.thumbnail %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:length) %></dt>
+      <dd><pre class="prettyprint"><%= @content.length %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @content.description %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              contents_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_content_path(@content), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              content_path(@content),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Filename:</strong>
-  <%= @content.filename %>
-</p>
-
-<p>
-  <strong>Sort order:</strong>
-  <%= @content.sort_order %>
-</p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @content.group %>
-</p>
-
-<p>
-  <strong>Thumbnail:</strong>
-  <%= @content.thumbnail %>
-</p>
-
-<p>
-  <strong>Length:</strong>
-  <%= @content.length %>
-</p>
-
-<p>
-  <strong>Content type:</strong>
-  <%= @content.content_type %>
-</p>
-
-<%= link_to 'Edit', edit_content_path(@content) %> |
-<%= link_to 'Back', contents_path %>

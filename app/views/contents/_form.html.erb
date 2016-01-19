@@ -1,49 +1,46 @@
-<%= form_for(@content) do |f| %>
-  <% if @content.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@content.errors.count, "error") %> prohibited this content from being saved:</h2>
-
-      <ul>
-      <% @content.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @content, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :title, :class => 'text-field form-control' %>
     </div>
-  <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :description, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :filename, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :filename, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :sort_order, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.number_field :sort_order, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :thumbnail, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :thumbnail, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :length, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :length, :class => 'text-field form-control' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :filename %><br>
-    <%= f.text_field :filename %>
-  </div>
-  <div class="field">
-    <%= f.label :sort_order %><br>
-    <%= f.number_field :sort_order %>
-  </div>
-  <div class="field">
-    <%= f.label :group_id %><br>
-    <%= f.text_field :group_id %>
-  </div>
-  <div class="field">
-    <%= f.label :thumbnail %><br>
-    <%= f.text_field :thumbnail %>
-  </div>
-  <div class="field">
-    <%= f.label :length %><br>
-    <%= f.text_field :length %>
-  </div>
-  <div class="field">
-    <%= f.label :content_type_id %><br>
-    <%= f.text_field :content_type_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  contents_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
